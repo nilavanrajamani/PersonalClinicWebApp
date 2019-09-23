@@ -1,0 +1,95 @@
+﻿@using PersonalWebsiteWebAppClinic.Entity;
+
+@model ResourceEntity
+
+@{
+    ResourceEntity resourceEntity = Model;
+    string resourceId = null;
+    string resourceOperation = "Add Resource";
+    if (resourceEntity != null)
+    {
+        resourceOperation = "Edit Resource";
+        resourceId = resourceEntity.Id.ToString();
+    }
+    else
+    {
+        resourceEntity = new ResourceEntity();
+    }
+    ViewBag.Title = resourceOperation;
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>@resourceOperation</h2>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>@resourceOperation</h5>
+                    <div class="ibox-tools">
+                        <button id="save" class="btn btn-primary" onclick="resourceOperations.save()" type="button">Save</button>
+                    </div>                   
+                </div>
+                <div class="ibox-content">
+                    <input type="hidden" id="hdnResourceId" value="@resourceId" />
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Title</label>
+                        <div class="col-sm-10"><input type="text" id="resourceTitle" class="form-control" value="@resourceEntity.Title"></div>
+                    </div>
+                    <div class="form-group">
+                        &nbsp;
+                    </div>
+                    <div class="form-group">
+                        <div class="click2edit wrapper p-md">
+                            @if (!string.IsNullOrWhiteSpace(resourceEntity.HtmlDocument))
+                            {
+                                @Html.Raw(resourceEntity.HtmlDocument)
+                            }
+                            else
+                            {
+                                <text>
+                                    <h3>Lorem Ipsum is simply</h3>
+                                    dummy text of the printing and typesetting industry. <strong>Lorem Ipsum has been the industry's</strong> standard dummy text ever since the 1500s,
+                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with
+                                    <br />
+                                    <br />
+                                    <ul>
+                                        <li>Remaining essentially unchanged</li>
+                                        <li>Make a type specimen book</li>
+                                        <li>Unknown printer</li>
+                                    </ul>
+                                </text>
+                            }
+
+                        </div>
+
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+        </div>
+    </div>
+
+</div>
+
+@section Styles {
+    @Styles.Render("~/plugins/summernoteStyles")
+}
+
+@section Scripts {
+    @Scripts.Render("~/plugins/summernote")
+    <script src="~/Scripts/Resource/Resource.js"></script>
+}

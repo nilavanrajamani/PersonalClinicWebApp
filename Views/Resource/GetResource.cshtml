@@ -1,0 +1,40 @@
+﻿@using PersonalWebsiteWebAppClinic.Entity;
+@model ResourceEntity
+
+@{
+    ViewBag.Title = "Resource Detail";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Resource</h2>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content  animated fadeInRight article">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="text-center article-title">
+                        <span class="text-muted"><i class="fa fa-clock-o"></i> @Model.DateOfEntry.ToString("dd-MMM-yyyy")</span>
+                        <h1>
+                            @Model.Title
+                        </h1>
+                    </div>
+                    @Html.Raw(Model.HtmlDocument)
+                    <hr>                                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
