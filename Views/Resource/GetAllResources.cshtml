@@ -14,41 +14,44 @@
     <div class="col-lg-2">
 
     </div>
+</div>
 
-    <div class="wrapper wrapper-content  animated fadeInRight blog">
+<div class="wrapper wrapper-content  animated fadeInRight blog">
+    <div class="row">
         @{
             if (Model != null)
             {
                 foreach (ResourceEntity item in Model)
                 {
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="ibox">
-                                        <div class="ibox-content">
-                                            <a href="@Url.Action("GetResource", "Resource", new { @id = item.Id })" class="btn-link">
-                                                <h2>
-                                                    @item.Title
-                                                </h2>
-                                            </a>                                            
-                                            <div class="ibox-tools">
-                                                <a href="@Url.Action("GetResource", "Resource", new { @id = item.Id })" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> View Resource </a>&nbsp;
-                                                <a href="@Url.Action("RenderResourceEditView", "Resource", new { @id = item.Id })" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                            </div>
-                                            <p>
-                                                @if (item.HtmlDocument != null)
-                                                {
-                                                    string htmlContent = HMTLHelperExtensions.HtmlToPlainText(item.HtmlDocument);
-                                                    if (htmlContent.Length > 4000)
-                                                    {
-                                                        @htmlContent.Substring(0, 4000);
-                                                    }
-                                                    else
-                                                    {
-                                                        @htmlContent;
-                                                    }
-                                                }
-                                            </p>
-                                        </div>
+                    <div class="col-sm-12">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h2>
+                                    @item.Title
+                                </h2>
+                                <div class="small m-b-xs">
+                                    <span class="text-muted"><i class="fa fa-clock-o"></i> @item.DateOfEntry.ToString("dd-MM-yyyy")</span>
+                                </div>
+                                <div class="ibox-tools">
+                                    <a href="@Url.Action("GetResource", "Resource", new { @id = item.Id })" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> View Resource </a>&nbsp;
+                                    <a href="@Url.Action("RenderResourceEditView", "Resource", new { @id = item.Id })" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <p style="font-size: 15px">
+                                    @if (item.HtmlDocument != null)
+                                    {
+                                        string htmlContent = HMTLHelperExtensions.HtmlToPlainText(item.HtmlDocument);
+                                        if (htmlContent.Length > 4000)
+                                        {
+                                            @htmlContent.Substring(0, 4000);
+                                        }
+                                        else
+                                        {
+                                            @htmlContent;
+                                        }
+                                    }
+                                </p>
                             </div>
                         </div>
                     </div>

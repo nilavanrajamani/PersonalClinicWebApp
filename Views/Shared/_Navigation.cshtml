@@ -30,6 +30,9 @@
             <li class="@Html.IsSelected(controller: "Resource", action: "RenderResourceEditView")">
                 <a href="@Url.Action("RenderResourceEditView", "Resource", new { @id = "" })"><i class="fa fa-plus"></i> <span class="nav-label" data-i18n="nav.layouts">Add Resource</span></a>
             </li>
+            <li class="@Html.IsSelected(controller: "Resource", action: "ViewAllCategories")">
+                <a href="@Url.Action("ViewAllCategories", "Resource")"><i class="fa fa-stethoscope"></i> <span class="nav-label" data-i18n="nav.layouts">Microsurgery</span></a>
+            </li>
         </ul>
     </div>
 </nav>

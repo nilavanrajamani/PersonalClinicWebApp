@@ -39,14 +39,12 @@ namespace PersonalWebsiteWebAppClinic.Controllers
             ResourceEntity resourceEntity = GetResourceById(id);
             return View(resourceEntity);
         }
-
         private ResourceEntity GetResourceById(string id)
         {
             IMongoQuery mongoQuery = Query<ResourceEntity>.EQ(p => p.Id, new MongoDB.Bson.ObjectId(id));
             ResourceEntity resourceEntity = _contextCatalog.ResourceEntityRepo.FindOne(mongoQuery);
             return resourceEntity;
         }
-
         [HttpPost]
         public JsonResult AddUpdateResource(string title, string htmlContentToSave, string resourceId)
         {
@@ -83,13 +81,19 @@ namespace PersonalWebsiteWebAppClinic.Controllers
                 }
                 resultEntity.IsSuccess = true;
                 //Return Json of added entity                
-            }            
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 resultEntity.IsSuccess = false;
                 resultEntity.Message = ex.Message;
             }
             return Json(resultEntity, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ViewAllCategories()
+        {
+            List<MainCategory> mainCategories = _contextCatalog.MainCategoryRepo.GetByPredicate(x => x.CategoryName != null)
+                .AsEnumerable().OrderBy(x => x.Order).ToList();
+            return View(mainCategories);
         }
     }
 }

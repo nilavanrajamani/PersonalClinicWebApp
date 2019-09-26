@@ -1,0 +1,72 @@
+﻿@using PersonalWebsiteWebAppClinic.Entity;
+
+@model List<MainCategory>
+
+@{
+    ViewBag.Title = "Microsurgery";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Microsurgery Categories</h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <strong>Microsurgery Categories</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h1>
+                        <b>
+                            Hand and Reconstructive Microsurgery
+                        </b>
+                    </h1>
+                </div>
+                <div class="ibox-content">
+                    <h2>
+                        Hand and Microsurgery specialty deals with the upper limb problems and reconstructive
+                        procedures involving salvage of limbs to restore the functional ability of the injured body
+                        parts and there by improve the quality of life of the patient.
+
+                    </h2>
+                    <br />
+                    <h3>Hand sub specialty involves management of following aspects: </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        @{
+            if (Model != null)
+            {
+                foreach (MainCategory mainCategory in Model)
+                {
+                    <div class="col-md-3">
+                        <div class="ibox">
+                            <div class="ibox-content product-box">
+
+                                <div class="product-imitation" style="padding:0px!important">
+                                    <img alt="image" class="img-preview img-thumbnail" src="~/Images/HandPics/Sample.jpg" />
+                                </div>
+                                <div class="product-desc">
+                                    <b><a href="#" class="product-name"> @mainCategory.CategoryName</a></b>
+                                    <div class="m-t text-righ">
+                                        <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }        
+    </div>
+</div>

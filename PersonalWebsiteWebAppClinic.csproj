@@ -283,6 +283,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\HandPics\CHA.jpg" />
+    <Content Include="Images\HandPics\Sample.jpg" />
     <Content Include="Images\profile_small.jpg" />
     <Content Include="Scripts\app\inspinia.js" />
     <Content Include="Scripts\app\skin.config.min.js" />
@@ -717,6 +719,7 @@
     <Content Include="Views\Resource\RenderResourceEditView.cshtml" />
     <Content Include="Views\Resource\GetAllResources.cshtml" />
     <Content Include="Views\Resource\GetResource.cshtml" />
+    <Content Include="Views\Resource\ViewAllCategories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
